@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Il } from "src/app/models/il";
+import { Tasinmaz } from "src/app/models/tasinmaz";
+import { IlService } from "src/app/services/il.service";
+import { TasinmazService } from "src/app/services/tasinmaz.service";
 
 @Component({
-  selector: 'app-tasinmaz',
-  templateUrl: './tasinmaz.component.html',
-  styleUrls: ['./tasinmaz.component.css']
+  selector: "app-tasinmaz",
+  templateUrl: "./tasinmaz.component.html",
+  styleUrls: ["./tasinmaz.component.css"],
 })
 export class TasinmazComponent implements OnInit {
+  tasinmazs: Tasinmaz[] = [];
+  dataLoaded=false
+  constructor(private tasinmazService: TasinmazService) {}
 
-  tasinmaz1 = { tasinmazId: 6, tasinmazName: "Şirket", ilId: 3, ilceId: 2 }
-  tasinmaz2 = { tasinmazId: 7, tasinmazName: "Şirket1", ilId: 3, ilceId: 2 }
-  tasinmaz3 = { tasinmazId: 8, tasinmazName: "Şirket2", ilId: 3, ilceId: 2 }
-  tasinmaz4 = { tasinmazId: 9, tasinmazName: "Şirket3", ilId: 3, ilceId: 2 }
-  tasinmazs = [this.tasinmaz1, this.tasinmaz2, this.tasinmaz3, this.tasinmaz4]
-
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getTasinmazs();
   }
-
+  getTasinmazs() {
+    this.tasinmazService
+      .getTasinmazs()
+      .subscribe(response => {this.tasinmazs = response.data
+        this.dataLoaded=true;
+      })
+      
+  }
 }
