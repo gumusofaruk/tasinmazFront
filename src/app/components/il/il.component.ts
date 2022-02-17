@@ -9,6 +9,7 @@ import { IlService } from 'src/app/services/il.service';
 })
 export class IlComponent implements OnInit {
   ils:Il[]=[];
+  currentIl:Il;
 
   constructor(private ilService: IlService) {}
 
@@ -19,8 +20,26 @@ export class IlComponent implements OnInit {
     this.ilService
       .getIls()
       .subscribe(response => {this.ils = response.data
-      })
-      
+      })   
+  }
+  setCurrentIl(il:Il){
+    this.currentIl=il;
+  }
+  getCurrentIlClass(il:Il){
+    if(il==this.currentIl){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+
+  }
+  getAllIlClass(){
+    if(!this.currentIl){
+      return "list-group-item active"
+    }
+    else{
+      return "list-group-item"
+    }
   }
 
 }

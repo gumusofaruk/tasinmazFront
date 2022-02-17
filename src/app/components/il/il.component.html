@@ -1,3 +1,9 @@
 <ul class="list-group">
-  <li *ngFor="let il of ils"  class="list-group-item">{{il.ilAdi}}</li>
-</ul>
+  <li (click)="setCurrentIl()" 
+  [class]="getAllIlClass()" 
+  routerLink="/tasinmazs">Tüm İller</li>
+  <li (click)="setCurrentIl(il)"
+  routerLink="/tasinmazs/il/{{il.ilId}}" *ngFor="let il of ils"  
+  [class]="getCurrentIlClass(il)">{{il.ilAdi}}</li>
+</ul> 
+<h5 *ngIf="currentIl">{{currentIl.ilAdi}} seçtiniz</h5>

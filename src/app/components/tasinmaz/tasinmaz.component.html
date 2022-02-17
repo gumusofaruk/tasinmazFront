@@ -1,6 +1,13 @@
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Taşınmaz ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+<div *ngIf="filterText" class="alert-primary">
+  {{filterText}} aradınız
+</div>
 <table *ngIf="dataLoaded==true" class="table">
   <thead>
     <tr>
@@ -8,12 +15,18 @@
       <th>Taşınmaz Adı</th>
       <th>Ilce Numarası</th>
       <th>Taşınmaz Numarası</th>
+      <th></th>
     </tr>
   </thead>
-  <tr *ngFor="let tasinmaz of tasinmazs">
-    <td>{{ tasinmaz.ilId }}</td>
-    <td>{{ tasinmaz.tasinmazAdi }}</td>
-    <td>{{ tasinmaz.ilceId }}</td>
-    <td>{{ tasinmaz.tasinmazId }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let tasinmaz of tasinmazs |filterPipe:filterText">
+      <td>{{ tasinmaz.ilId }}</td>
+      <td>{{ tasinmaz.tasinmazAdi }}</td>
+      <td>{{ tasinmaz.ilceId }}</td>
+      <td>{{ tasinmaz.tasinmazId }}</td>
+      <td><button (click)="addToCart(tasinmaz)" type="button" class="btn btn-success">Sepete Ekle </button></td>
+    </tr>
+  </tbody>
+
+  
 </table>

@@ -1,0 +1,62 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header"><h5 class="title">Taşınmaz Ekle</h5></div>
+      <div class="card-body">
+        <form [formGroup]="tasinmazAddForm">
+          <div class="mb-3">
+            <label for="tasinmazAdi">Taşınmaz Adı</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="tasinmazAdi"
+                formControlName="tasinmazAdi"
+                class="form-control"
+                placeholder="Taşınmaz Adı"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="ilId">İl Numarası</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="IlId"
+                formControlName="ilId"
+                class="form-control"
+                placeholder="İl Numarası"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="tasinmazId">Taşınmaz Numarası</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="tasinmazId"
+                formControlName="tasinmazId"
+                class="form-control"
+                placeholder="Taşınmaz Numarası"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="ilceId">İlçe Numarası</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="ilceId"
+                formControlName="ilceId"
+                class="form-control"
+                placeholder="İlçe Numarası"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
