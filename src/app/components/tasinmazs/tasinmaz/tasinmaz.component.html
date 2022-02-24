@@ -1,5 +1,6 @@
+
 <div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
+  <span class="visually-hidden">Yükleniyor...</span>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Taşınmaz ara</label>
@@ -25,8 +26,8 @@
       <td>{{ tasinmaz.ilceId }}</td>
       <td>{{ tasinmaz.tasinmazId }}</td>
       <td><button (click)="addToCart(tasinmaz)" type="button" class="btn btn-success">Sepete Ekle </button></td>
+      <td><button (click)="delete(tasinmaz)" type="button" class="btn btn-danger">Taşınmazı Sil </button></td>
     </tr>
-  </tbody>
-
-  
+  </tbody> 
 </table>
+

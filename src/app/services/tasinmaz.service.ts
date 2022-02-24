@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Tasinmaz } from '../models/tasinmaz';
 import { ResponseModel } from '../models/responseModel';
+import { Tasinmazs } from '../models/tasinmazs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class TasinmazService {
   }
   add(tasinmaz:Tasinmaz):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"tasinmazs/add",tasinmaz)
+  }
+  delete(tasinmaz:Tasinmaz) {
+    // console.log("buna tıkladım: "+tasinmaz.tasinmazId);
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "tasinmazs/delete", tasinmaz);
   }
 }

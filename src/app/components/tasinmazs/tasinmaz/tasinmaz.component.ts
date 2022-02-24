@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { Il } from "src/app/models/il";
 import { Tasinmaz } from "src/app/models/tasinmaz";
@@ -20,7 +20,8 @@ export class TasinmazComponent implements OnInit {
     private tasinmazService: TasinmazService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +44,18 @@ export class TasinmazComponent implements OnInit {
       this.tasinmazs = response.data;
       this.dataLoaded = true;
     });
+  }
+  reloadCurrentPage() {
+    window.location.reload();
+   }
+  delete(tasinmaz:Tasinmaz){
+    this.tasinmazService.delete(tasinmaz).subscribe((res)=>{
+      //this.toastrService.success("Taşınmaz silindi",tasinmaz.tasinmazAdi);
+    }
+  );this.reloadCurrentPage();
+  
+  this.toastrService.success("Taşınmaz silindi",tasinmaz.tasinmazAdi)
+    
   }
   addToCart(tasinmaz: Tasinmaz) {
     if (tasinmaz.tasinmazId === 1) {

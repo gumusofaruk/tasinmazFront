@@ -1,0 +1,20 @@
+<div class="container pt-5">
+  <div class="row justify-content-sm-center pt-5">
+      <div class="col-sm-6 shadow round pb-3">
+        <h1 class="text-center pt-3 text-secondary"> Taşınmaz Projesi</h1>
+          <form [formGroup]="loginForm">
+              <div class="form-group">
+                <label class="col-form-label">Email:</label>
+                <input formControlName="email" type="text" class="form-control" >
+                <small *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched" class="text-danger">Email boş bırakılamaz</small>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Şifre:</label>
+                <input formControlName="password" class="form-control" >
+                <small *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="text-danger">Şifre Gerekli(en az 8 karakter)</small> 
+              </div>
+              <button (click)="login()" [disabled]="loginForm.invalid" type="button" class="btn btn-primary">Giriş Yap</button>
+            </form>
+      </div>
+  </div>
+</div>
